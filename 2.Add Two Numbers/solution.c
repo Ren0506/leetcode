@@ -6,40 +6,31 @@
  * };
  */
 struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
-    // 建立假頭節點
-    struct ListNode* dummy =(struct ListNode*)malloc(sizeof(struct ListNode));
+    struct ListNode*dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
     dummy->next = NULL;
-    // 用來建立答案
-    struct ListNode* current = dummy;
     int carry = 0;
-    while(l1 != NULL || l2 != NULL || carry != 0) {
+    struct ListNode*current = dummy;
+    while(l1 != NULL || l2 != NULL || carry != 0){
         int x = 0;
         int y = 0;
-        // 取 l1 的值
-        if(l1 != NULL) {
+        int sum = 0;
+        if(l1 != NULL){
             x = l1->val;
         }
-        // 取 l2 的值
-        if(l2 != NULL) {
+        if(l2 != NULL){
             y = l2->val;
         }
-        // 加法
-        int sum = x + y + carry;
-        // 更新進位
+        sum = x + y + carry;
         carry = sum / 10;
-        // 建立新節點
-        struct ListNode* node =(struct ListNode*)malloc(sizeof(struct ListNode));
+        struct ListNode*node = (struct ListNode*)malloc(sizeof(struct ListNode));//每跑一個while要建一個node，所以此行要放在while裡
         node->val = sum % 10;
         node->next = NULL;
-        // 接到答案後面
         current->next = node;
         current = current->next;
-        // 移動 l1
-        if(l1 != NULL) {
+        if(l1 != NULL){
             l1 = l1->next;
         }
-        // 移動 l2
-        if(l2 != NULL) {
+        if(l2 != NULL){
             l2 = l2->next;
         }
     }
