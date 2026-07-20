@@ -6,14 +6,14 @@
  * };
  */
 struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
-    struct ListNode*dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
+    struct ListNode* dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
     dummy->next = NULL;
-    int carry = 0;
     struct ListNode*current = dummy;
+    int carry = 0;
+    int sum = 0;
     while(l1 != NULL || l2 != NULL || carry != 0){
         int x = 0;
         int y = 0;
-        int sum = 0;
         if(l1 != NULL){
             x = l1->val;
         }
@@ -22,11 +22,11 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
         }
         sum = x + y + carry;
         carry = sum / 10;
-        struct ListNode*node = (struct ListNode*)malloc(sizeof(struct ListNode));//每跑一個while要建一個node，所以此行要放在while裡
-        node->val = sum % 10;
-        node->next = NULL;
+        struct ListNode* node = (struct ListNode*)malloc(sizeof(struct ListNode));//每跑一個while要建一個node，所以此行要放在while裡
         current->next = node;
         current = current->next;
+        node->val = sum % 10;
+        node->next = NULL;
         if(l1 != NULL){
             l1 = l1->next;
         }
