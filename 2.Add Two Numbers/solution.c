@@ -6,9 +6,9 @@
  * };
  */
 struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
-    struct ListNode* dummy = (struct ListNode*)malloc(sizeof(struct ListNode));
+    struct ListNode* dummy = (struct ListNode*)malloc(sizeof(struct ListNode));//宣告一個假的head
     dummy->next = NULL;
-    struct ListNode*current = dummy;
+    struct ListNode*current = dummy;//宣告現在位置
     int carry = 0;
     int sum = 0;
     while(l1 != NULL || l2 != NULL || carry != 0){
