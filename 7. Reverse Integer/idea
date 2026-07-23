@@ -1,0 +1,10 @@
+The idea is to reverse the integer digit by digit.
+
+In each iteration, I extract the last digit using x % 10, remove it by doing x /= 10, and append it to the result with result = result * 10 + digit.
+
+I use a long long variable because the intermediate result may exceed the 32-bit integer range during the calculation.
+After each update, I check whether the result is outside INT_MIN and INT_MAX. If it is, I return 0.
+
+Finally, after processing all digits, I return the reversed integer.
+
+The time complexity is O(log n), and the space complexity is O(1).
