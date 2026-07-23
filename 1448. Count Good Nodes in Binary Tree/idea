@@ -1,0 +1,13 @@
+I use a depth-first search approach.
+The key idea is that while traversing from the root to each node, I keep the maximum value we have seen so far.
+
+For each node, I compare its value with the current maximum value. If the node value is greater than or equal to the maximum value, this node is a good node.
+
+After that, I update the maximum value and continue DFS on the left and right subtrees.
+
+Since every node is visited exactly once, the time complexity is O(N). The recursion stack takes O(H) space, where H is the height of the tree.
+
+
+這題我會使用 DFS（深度優先搜尋）來遍歷整棵二元樹。在遍歷的過程中，我會維護從 root 到目前節點路徑上的最大值，因為判斷一個節點是否為 good node，需要知道路徑上是否有比它更大的祖先。
+對於每個節點，我會比較目前節點的值和目前最大值，如果目前節點值大於或等於最大值，代表它沒有被前面的節點超越，因此是一個 good node，答案加一。
+接著更新最大值，並將更新後的最大值傳遞給左、右子樹繼續搜尋。因為每個節點只會被訪問一次，所以時間複雜度是 O(N)，而遞迴所使用的空間取決於樹的高度，因此空間複雜度是 O(H)。
