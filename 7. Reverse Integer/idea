@@ -8,3 +8,12 @@ After each update, I check whether the result is outside INT_MIN and INT_MAX. If
 Finally, after processing all digits, I return the reversed integer.
 
 The time complexity is O(log n), and the space complexity is O(1).
+
+
+這題的核心想法是逐位反轉整數。
+
+在每一次迴圈中，我會先使用 x % 10 取得整數的最後一位數字，再透過 x /= 10 將最後一位移除。接著，利用 result = result * 10 + digit 將取出的數字接到結果的尾端，逐步建立反轉後的整數。
+
+由於反轉的過程中，結果可能會超過 32 位元整數（32-bit integer） 的範圍，因此我使用 long long 來儲存中間結果。每次更新 result 後，都會檢查它是否超出 INT_MIN 或 INT_MAX。如果超出範圍，就依照題目要求直接回傳 0。
+
+最後，當所有數字都處理完後，回傳反轉後的整數即可。
